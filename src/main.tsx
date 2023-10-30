@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App.tsx";
+
+import App from "./App.tsx";
+import TopStories from "./pages/topstories.tsx";
+import StoryView from "./components/story-view.tsx";
+import NewStories from "./pages/newstories.tsx";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -8,28 +12,36 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import {
-  Navigate,
   RouterProvider,
   createBrowserRouter,
+  Navigate,
 } from "react-router-dom";
-import TopStories from "./pages/topstories.tsx";
-import { Navbar } from "./components/navbar.tsx";
-import StoryView from "./components/story-view.tsx";
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Navigate to="/top-stories" />,
+    element: <App />,
+    children: [
+      {
+        index: true,
+        path: "/top-stories",
+        element: <TopStories />,
+      },
+      {
+        path: "/top-stories/:id",
+        element: <StoryView />,
+      },
+      {
+        path: "/new-stories",
+        element: <NewStories />,
+      },
+    ],
   },
+
   {
-    path: "/top-stories",
-    element: <TopStories />,
-  },
-  {
-    path: "/top-stories/:id",
-    element: <StoryView />,
+    path: "*",
+    element: <Navigate to={"/top-stories"} />,
   },
 ]);
 
@@ -38,7 +50,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <ChakraProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Navbar />
         <RouterProvider router={router} />
       </QueryClientProvider>
     </ChakraProvider>

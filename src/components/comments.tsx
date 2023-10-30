@@ -1,14 +1,14 @@
-// import { useQuery } from "@tanstack/react-query";
-// import { getComment } from "../api/hnService";
+import { Box } from "@chakra-ui/react";
+import Comment from "./comment";
 
-// const Comments = (commentId: number) => {
-// const { data, isLoading } = useQuery({
-//   queryKey: ["top-story", commentId, "detail"],
-//   queryFn: () => getComment(commentId),
-//   staleTime: 5000,
-// });
+const Comments = ({ commentIds }: { commentIds: number[] }) => {
+  return (
+    <Box>
+      {commentIds.map((commentId) => (
+        <Comment commentId={commentId} key={commentId} />
+      ))}
+    </Box>
+  );
+};
 
-//   return <div>comments</div>;
-// };
-
-// export default Comments;
+export default Comments;

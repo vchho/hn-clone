@@ -7,8 +7,6 @@ import { Story } from "../utils/consts";
 import { Link as RRLink } from "react-router-dom";
 
 const Story = ({ data }: { data: Story }) => {
-  console.log("data in each story", data);
-
   return (
     <>
       <Box
