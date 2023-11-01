@@ -1,5 +1,13 @@
 # How to run
 
+Install
+
+```bash
+pnpm i
+```
+
+Run
+
 ```bash
 pnpm run dev
 ```
