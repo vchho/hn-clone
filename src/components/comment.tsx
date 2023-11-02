@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Comments from "./comments";
-import { mapTime } from "../utils/mapper";
+import { timeFormatter } from "../utils/timeFormat";
 import { getComment } from "../api/hnService";
 
 import { useQuery } from "@tanstack/react-query";
@@ -37,7 +37,7 @@ const Comment = ({ commentId }: { commentId: number }) => {
       <Box bg="smoke" mt={"4"} mb="4" border={"1px"} borderRadius={"4px"} p="4">
         <Flex justifyContent={"space-between"} alignItems={"center"}>
           <Text>
-            {data.by} | {mapTime(data.time)}
+            {data.by} | {timeFormatter(data.time)}
           </Text>
 
           <Button onClick={setPostMinimize}>

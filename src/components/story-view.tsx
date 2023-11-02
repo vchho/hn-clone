@@ -1,11 +1,10 @@
-import { Container, Heading, Text } from "@chakra-ui/react";
 import { getStory } from "../api/hnService";
+import Comment from "./comment";
+import { timeFormatter } from "../utils/timeFormat";
 
+import { Container, Heading, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { mapTime } from "../utils/mapper";
-// import Comments from "./comments";
-import Comment from "./comment";
 
 const StoryView = () => {
   const { id } = useParams() as { id: string };
@@ -28,7 +27,7 @@ const StoryView = () => {
         <>
           <Heading>{data.title}</Heading>
           <Text>
-            {data.score} points by {data.by} | {mapTime(data.time)} |{" "}
+            {data.score} points by {data.by} | {timeFormatter(data.time)} |{" "}
             {data.descendants} comments
           </Text>
 
@@ -36,8 +35,6 @@ const StoryView = () => {
             data.kids.map((id) => <Comment commentId={id} key={id} />)}
         </>
       )}
-
-      {/* {id} */}
     </Container>
   );
 };

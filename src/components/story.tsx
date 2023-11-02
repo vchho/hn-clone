@@ -1,7 +1,7 @@
 import { Box, Link, Text } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
-import { mapTime } from "../utils/mapper";
+import { timeFormatter } from "../utils/timeFormat";
 import { Story } from "../utils/consts";
 
 import { Link as RRLink } from "react-router-dom";
@@ -22,7 +22,8 @@ const Story = ({ data }: { data: Story }) => {
         </Link>
         <Box display={"flex"}>
           <Text>
-            By: {data?.by} | Score: {data?.score} | Time: {mapTime(data?.time)}
+            By: {data?.by} | Score: {data?.score} | Time:{" "}
+            {timeFormatter(data?.time)}
           </Text>
         </Box>
         <Box display={"flex"}>
