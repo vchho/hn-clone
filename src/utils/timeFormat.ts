@@ -3,7 +3,7 @@ import duration from "dayjs/plugin/duration";
 
 dayjs.extend(duration);
 
-export const mapTime = (timestamp: number) => {
+export const timeFormatter = (timestamp: number) => {
   const now = dayjs();
   const then = dayjs.unix(timestamp);
 
