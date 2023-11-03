@@ -14,13 +14,10 @@ const TopStories = () => {
   });
 
   return (
-    <>
-      <Container maxW="container.xl">
-        {data
-          ?.slice(0, 10)
-          .map((storyId) => <Stories storyId={storyId} key={storyId} />)}
-      </Container>
-    </>
+    <Container maxW="container.xl">
+      {data &&
+        data.map((storyId) => <Stories storyId={storyId} key={storyId} />)}
+    </Container>
   );
 };
 

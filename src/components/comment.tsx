@@ -40,7 +40,7 @@ const Comment = ({ commentId }: { commentId: number }) => {
             {data.by} | {timeFormatter(data.time)}
           </Text>
 
-          <Button onClick={setPostMinimize}>
+          <Button onClick={setPostMinimize} size={"sm"}>
             {hidePost ? "Unhide" : "Hide"}
           </Button>
         </Flex>
