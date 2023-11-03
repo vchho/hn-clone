@@ -34,9 +34,9 @@ const Comment = ({ commentId }: { commentId: number }) => {
 
   return (
     data && (
-      <Box bg="smoke" mt={"4"} mb="4" border={"1px"} borderRadius={"4px"} p="4">
+      <Box bg="smoke" mt={"2"} mb="2" border={"1px"} borderRadius={"4px"} p="4">
         <Flex justifyContent={"space-between"} alignItems={"center"}>
-          <Text>
+          <Text size={"14px"}>
             {data.by} | {timeFormatter(data.time)}
           </Text>
 
@@ -45,12 +45,13 @@ const Comment = ({ commentId }: { commentId: number }) => {
           </Button>
         </Flex>
         {hidePost ? (
-          <Box>
-            <Text>Hidden</Text>
-          </Box>
+          <Box></Box>
         ) : (
           <>
-            <div dangerouslySetInnerHTML={{ __html: data.text }}></div>
+            <div
+              dangerouslySetInnerHTML={{ __html: data.text }}
+              style={{ fontSize: "14px" }}
+            ></div>
             {data.kids && <Comments commentIds={data?.kids} />}
           </>
         )}
