@@ -15,8 +15,6 @@ const StoryView = () => {
     staleTime: 5000,
   });
 
-  console.log("data", data);
-
   if (isLoading) {
     <h1>Loading...</h1>;
   }
